@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta charset="utf-8">
+    <title>ログイン画面</title>
+</head>
+<body>
+
+  <v-header>
+    <!--位置調整とアンダーラインはcssで-->
+    <v-col>①〇〇会社</v-col>
+    <v-col>ホーム画面</v-col>
+    <v-col>マスタ情報編集</v-col>
+    <v-col>日次情報編集</v-col>
+    <v-col class="top-right">&lt;ログイン状態, ユーザ名, ログアウトボタン&gt;</v-col>
+</v-header>
+
+    
+
+    <div id="app">
+        <v-app>
+
+          <!--入力フォーム-->
+          <template>
+            <v-form v-model="valid">
+              <v-container>
+                <v-row>
+                  <v-col
+                    cols="12"
+                    md="4"
+                  >
+                    <v-text-field
+                      v-model="sccompanycode"
+                      :rules="nameRules"
+                      label="Company code"
+                      required
+                    ></v-text-field>
+                  </v-col>
+          
+                  <v-col
+                    cols="12"
+                    md="4"
+                  >
+                    <v-text-field
+                      v-model="sccode"
+                      :rules="nameRules"
+                      label="sccode"
+                      required
+                    ></v-text-field>
+                  </v-col>
+          
+                  <v-col
+                    cols="12"
+                    md="4"
+                  >
+                    <v-text-field
+                      v-model="name"
+                      :rules="nameRules"
+                      label="name"
+                      required
+                    ></v-text-field>
+                  </v-col>
+
+                  <v-col
+                  class="d-flex"
+                  cols="12"
+                  sm="6"
+                >
+                  <v-select
+                    :items="items"
+                    label="login"
+                  ></v-select>
+                </v-col>
+                </v-row>
+              </v-container>   
+  
+            <!--クリックボタン-->
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn>④click me</v-btn>
+                <v-spacer></v-spacer>
+              </v-card-actions>
+
+            </v-form>
+          </template>
+
+
+
+              <!--忘れたリンク-->
+              <a href="">⑤パスワードをお忘れですか？</a>
+              
+              <!--フッター-->
+              <v-footer elevation="10">
+            <v-col class="font-weight-medium text-center" cols="12">⑥Copyright 2008 〇〇会社</v-col>
+          </v-footer>
+        </v-app>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  
+    <script>
+        new Vue({
+          el: '#app',
+          vuetify: new Vuetify(),
+        })
+      </script>
+</body>
+</html>
