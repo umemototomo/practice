@@ -31,7 +31,9 @@ v-col.top-right {
 
 form {
      width: 250px;
+     height: 400px;
      border: solid 1px black;
+     margin:  0 auto;
  }
  
 label {
@@ -39,5 +41,8 @@ label {
    }
  
 .example{
+    text-align: center;
+}
+a{
     text-align: center;
 }

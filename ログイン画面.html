@@ -23,13 +23,13 @@
     
 
     <div id="app">
-        <v-app>
+        <v-app >
 
           <!--入力フォーム-->
           <template>
-            <v-form v-model="valid">
+            <v-form v-model="valid" >
               <v-container>
-                <v-row>
+                <v-row class="text-center">
                   <v-col
                     cols="12"
                     md="4"
@@ -67,7 +67,6 @@
                   </v-col>
 
                   <v-col
-                  class="d-flex"
                   cols="12"
                   sm="6"
                 >
@@ -76,15 +75,17 @@
                     label="login"
                   ></v-select>
                 </v-col>
+                
+                <!--クリックボタン-->
+                 <v-card-actions>
+                 <v-spacer></v-spacer>
+                 <v-btn>④click me</v-btn>
+                 <v-spacer></v-spacer>
+                 </v-card-actions>
                 </v-row>
               </v-container>   
   
-            <!--クリックボタン-->
-            <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn>④click me</v-btn>
-                <v-spacer></v-spacer>
-              </v-card-actions>
+            
 
             </v-form>
           </template>
