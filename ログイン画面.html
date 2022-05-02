@@ -13,12 +13,29 @@
 
   <v-header>
     <!--位置調整とアンダーラインはcssで-->
-    <v-col>①〇〇会社</v-col>
-    <v-col>ホーム画面</v-col>
-    <v-col>マスタ情報編集</v-col>
-    <v-col>日次情報編集</v-col>
-    <v-col class="top-right">&lt;ログイン状態, ユーザ名, ログアウトボタン&gt;</v-col>
-</v-header>
+    <v-col>
+      ①〇〇会社
+    </v-col>
+    <v-col>
+      <a href="">ホーム画面</a>
+      </v-col>
+    <v-col>
+      <a href="">マスタ情報編集</a>
+    </v-col>
+    <v-col>
+      <a href="">日次情報編集</a>
+    </v-col>
+    <v-col class="top-right">
+      &lt;ログイン状態, ユーザ名, <a href="">ログアウトボタン</a>&gt;
+    </v-col>
+    </v-header>
+
+    <!--②ログイン画面-->
+    <div main="top">
+      <h3>
+        ②ログイン画面
+      </h3>
+    </div>
 
     
 
@@ -30,66 +47,50 @@
             <v-form v-model="valid" >
               <v-container>
                 <v-row class="text-center">
-                  <v-col
-                    cols="12"
-                    md="4"
-                  >
+                  <v-col>
+                    <!--会社コード-->
                     <v-text-field
                       v-model="sccompanycode"
                       :rules="nameRules"
-                      label="Company code"
+                      label="③Company code"
                       required
                     ></v-text-field>
-                  </v-col>
-          
-                  <v-col
-                    cols="12"
-                    md="4"
-                  >
+
+                    <!--scコード-->
                     <v-text-field
                       v-model="sccode"
                       :rules="nameRules"
                       label="sccode"
                       required
                     ></v-text-field>
-                  </v-col>
-          
-                  <v-col
-                    cols="12"
-                    md="4"
-                  >
+
+                    <!--名前-->
                     <v-text-field
                       v-model="name"
                       :rules="nameRules"
                       label="name"
                       required
                     ></v-text-field>
-                  </v-col>
 
-                  <v-col
-                  cols="12"
-                  sm="6"
-                >
+                    <!--ログイン先-->
                   <v-select
                     :items="items"
                     label="login"
                   ></v-select>
-                </v-col>
-                
-                <!--クリックボタン-->
+
+                 <!--クリックボタン-->
                  <v-card-actions>
                  <v-spacer></v-spacer>
                  <v-btn>④click me</v-btn>
                  <v-spacer></v-spacer>
                  </v-card-actions>
+                </v-col>
+              
                 </v-row>
               </v-container>   
   
-            
-
             </v-form>
           </template>
-
 
 
               <!--忘れたリンク-->
