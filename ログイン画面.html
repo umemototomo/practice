@@ -44,44 +44,50 @@
 
           <!--入力フォーム-->
           <template>
-            <v-form v-model="valid" >
+            <v-form
+            ref="test" 
+            v-model="valid" >
               <v-container>
                 <v-row class="text-center">
                   <v-col>
                     <!--会社コード-->
                     <v-text-field
-                      v-model="sccompanycode"
-                      :rules="nameRules"
-                      label="③Company code"
-                      required
-                    ></v-text-field>
+                    v-model="text1"
+                    label="CompanyCode"
+                    :rules="[required, limit_length]"
+                    counter="4"
+                  ></v-text-field>
 
                     <!--scコード-->
                     <v-text-field
-                      v-model="sccode"
-                      :rules="nameRules"
+                      v-model="txet2"
+                      :rules="[required]"
                       label="sccode"
-                      required
+                      counter="4"
                     ></v-text-field>
 
                     <!--名前-->
                     <v-text-field
-                      v-model="name"
-                      :rules="nameRules"
+                      v-model="text3"
+                      :rules="[required, limit_name]"
                       label="name"
-                      required
+                      counter="10"
                     ></v-text-field>
 
                     <!--ログイン先-->
                   <v-select
-                    :items="items"
-                    label="login"
+                  :items="h"
+                  :rules="[v => !!v || 'ログイン先が選択されていません']"
+                  label="login"
+
+
                   ></v-select>
 
                  <!--クリックボタン-->
                  <v-card-actions>
                  <v-spacer></v-spacer>
-                 <v-btn>④click me</v-btn>
+                 <v-btn text v-on:click="submit">④click me</v-btn>
+                 <span v-if="success">ログインしました</span>
                  <v-spacer></v-spacer>
                  </v-card-actions>
                 </v-col>
@@ -91,8 +97,6 @@
   
             </v-form>
           </template>
-
-
               <!--忘れたリンク-->
               <a href="">⑤パスワードをお忘れですか？</a>
               
@@ -104,14 +108,43 @@
 
     </div>
 
+    
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
   
-    <script>
-        new Vue({
-          el: '#app',
-          vuetify: new Vuetify(),
-        })
-      </script>
+    <script type="text/javascript">
+      Vue.config.devtools = true;
+      new Vue({
+        el: '#app',
+        vuetify: new Vuetify(),
+        data: {
+        // 各テキストボックス、アイテムの値
+        text1: "",
+        text2: "",
+        text3: "",
+        h: ['Foo', 'Bar'],
+        // 送信が成功したかどうか
+        success: false,
+
+         // 入力規則
+        required: value => !!value || "必ず入力してください", // 入力必須の制約
+        limit_length: value => value.length <= 4 || "4文字以内で入力してください", // 文字数の制限
+        limit_name: value => value.length <= 10 || "10文字以内で入力してください",
+    
+      },
+      methods: {
+        // 送信を試みるメソッド（「送信する」がクリックされたときに呼ばれる）
+        submit() {
+          if (this.$refs.test.validate()) {
+        // すべてのバリデーションが通過したときのみ
+        // if文の中に入る
+        this.success = true;
+      } else {
+        this.success = false;
+      }
+        }
+      }
+      });
+    </script>
 </body>
 </html>
